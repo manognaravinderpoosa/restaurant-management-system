@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 function Login() {
     const [userId, setUserId] = useState("");
     const [password, setPassword] = useState("");
@@ -12,7 +14,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:5000/api/login", {
+            const response = await axios.post(`${API_URL}/api/login`, {
                 user_id: userId,
                 password: password
             });
@@ -57,7 +59,7 @@ function Login() {
                     </div>
                     <button type="submit">Login</button>
                     <div className="signup-link">
-                        Don’t have an account? <a href="/signup">Sign Up</a>
+                        Don't have an account? <a href="/signup">Sign Up</a>
                     </div>
                 </form>
             </div>
