@@ -1,0 +1,318 @@
+/* Elegant Login Page - Matching Homepage Purple Theme ✨ */
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #D8B4FE 0%, #C4B5FD 25%, #A5B4FC 50%, #93C5FD 75%, #BAE6FD 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    animation: fadeIn 0.6s ease-in;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.1) 0%, transparent 60%),
+        radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 48px 44px;
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+    width: 420px;
+    max-width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 32px;
+    color: #4a5568;
+    font-size: 28px;
+    font-weight: 700;
+    position: relative;
+}
+
+.login-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #8B5CF6, #A855F7);
+    border-radius: 2px;
+}
+
+.login-form .input-box {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.login-form .input-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #4a5568;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.login-form .input-box input {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 2px solid #e2e8f0;
+    background: #f8fafc;
+    font-size: 16px;
+    color: #2d3748;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: inherit;
+}
+
+.login-form .input-box input:focus {
+    border-color: #8B5CF6;
+    background: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    transform: translateY(-1px);
+}
+
+.login-form .input-box input:focus~label {
+    color: #8B5CF6;
+}
+
+.login-form button {
+    width: 100%;
+    background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 25%, #9333EA 50%, #7C3AED 75%, #6D28D9 100%);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    margin-top: 8px;
+    box-shadow: 0 8px 16px rgba(139, 92, 246, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.login-form button:hover::before {
+    left: 100%;
+}
+
+.login-form button:hover {
+    background: linear-gradient(135deg, #7C3AED 0%, #9333EA 25%, #8B5CF6 50%, #A855F7 75%, #8B5CF6 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(139, 92, 246, 0.5);
+}
+
+.login-form button:active {
+    transform: translateY(0px);
+    transition: transform 0.1s ease;
+}
+
+.signup-link {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: #718096;
+}
+
+.signup-link a {
+    color: #8B5CF6;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.signup-link a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #8B5CF6, #A855F7);
+    transition: width 0.3s ease;
+}
+
+.signup-link a:hover::before {
+    width: 100%;
+}
+
+.signup-link a:hover {
+    color: #A855F7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;
+        max-width: 380px;
+        padding: 36px 32px;
+        margin: 20px;
+    }
+
+    .login-container h2 {
+        font-size: 24px;
+    }
+
+    .login-form .input-box input {
+        padding: 14px 16px;
+        font-size: 16px;
+    }
+
+    .login-form button {
+        padding: 14px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 28px 24px;
+        border-radius: 20px;
+    }
+
+    .login-container h2 {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+
+    .login-form .input-box {
+        margin-bottom: 20px;
+    }
+}
+
+/* Loading and Success States */
+.login-form button.loading {
+    background: linear-gradient(135deg, #a0aec0, #cbd5e0);
+    cursor: not-allowed;
+    position: relative;
+}
+
+.login-form button.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.login-form button.success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    animation: pulse 0.6s ease-in-out;
+}
+
+.login-form button.error {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Focus Accessibility */
+.login-form button:focus-visible {
+    outline: 3px solid rgba(139, 92, 246, 0.5);
+    outline-offset: 2px;
+}
+
+.login-form .input-box input:focus-visible {
+    outline: none;
+}

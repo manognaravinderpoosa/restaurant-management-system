@@ -1,0 +1,475 @@
+/* ReceptionManager.css - Modern Clean Design */
+
+.reception-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #afb4cc 0%, #764ba2 100%);
+    padding: 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.reception-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Header */
+.reception-container h2 {
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.reception-container h2::before {
+    content: '🏨';
+    font-size: 2rem;
+}
+
+/* Main Content */
+.reception-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Table Container */
+.table-wrapper {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 1px 0px rgba(255, 255, 255, 0.4) inset;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-x: auto;
+}
+
+.table-header {
+    color: #2d3748;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.table-header::before {
+    content: '📋';
+    font-size: 1.2rem;
+}
+
+/* Reception Table */
+.reception-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-size: 0.9rem;
+}
+
+.reception-table thead {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.reception-table th {
+    padding: 1rem 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.reception-table th:first-child {
+    border-radius: 12px 0 0 0;
+}
+
+.reception-table th:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+.reception-table td {
+    padding: 1rem 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #2d3748;
+    vertical-align: top;
+    transition: background-color 0.2s ease;
+}
+
+.reception-table tr:hover td {
+    background-color: #f8fafc;
+}
+
+.reception-table tr:last-child td {
+    border-bottom: none;
+}
+
+.reception-table tr:last-child td:first-child {
+    border-radius: 0 0 0 12px;
+}
+
+.reception-table tr:last-child td:last-child {
+    border-radius: 0 0 12px 0;
+}
+
+/* Table Number Styling */
+.table-number {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 1.125rem;
+    background: linear-gradient(135deg, #f7fafc, #edf2f7);
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-align: center;
+    display: inline-block;
+    min-width: 60px;
+}
+
+/* Order Items List */
+.reception-table td ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.reception-table td li {
+    padding: 0.5rem 0.75rem;
+    background: #f8fafc;
+    border-radius: 6px;
+    border-left: 3px solid #667eea;
+    font-size: 0.85rem;
+    color: #4a5568;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-name {
+    font-weight: 500;
+    flex: 1;
+}
+
+.item-quantity {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    min-width: 24px;
+    text-align: center;
+}
+
+/* Status Column */
+.status-cell {
+    text-align: center;
+}
+
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    min-width: 80px;
+}
+
+.status-pending {
+    background: linear-gradient(135deg, #ffd89b, #19547b);
+    color: white;
+}
+
+.status-preparing {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+}
+
+.status-ready {
+    background: linear-gradient(135deg, #00b894, #00cec9);
+    color: white;
+}
+
+.status-served {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.reception-table button {
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.reception-table button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-update {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+}
+
+.btn-complete {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+}
+
+.btn-cancel {
+    background: linear-gradient(135deg, #f56565, #e53e3e);
+}
+
+/* Total Amount */
+.total-amount {
+    font-weight: 700;
+    color: #2d3748;
+    font-size: 1.125rem;
+    background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #81e6d9;
+}
+
+/* Time Stamps */
+.timestamp {
+    color: #718096;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: #f7fafc;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* Empty State */
+.no-orders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    color: #718096;
+    font-size: 1.125rem;
+    text-align: center;
+    gap: 1rem;
+}
+
+.no-orders::before {
+    content: '📋';
+    font-size: 4rem;
+    opacity: 0.6;
+}
+
+/* Filter Controls */
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    color: #4a5568;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-color: transparent;
+}
+
+.filter-btn:hover:not(.active) {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .reception-table {
+        font-size: 0.8rem;
+    }
+    
+    .reception-table th,
+    .reception-table td {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .reception-container {
+        padding: 1rem;
+    }
+
+    .reception-container h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        flex-direction: column;
+    }
+
+    .table-wrapper {
+        padding: 1.5rem;
+    }
+
+    .reception-table th,
+    .reception-table td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.75rem;
+    }
+
+    .table-number {
+        font-size: 1rem;
+        min-width: 50px;
+    }
+
+    .reception-table td li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .filter-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reception-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .table-wrapper {
+        padding: 1rem;
+    }
+
+    .reception-table {
+        font-size: 0.7rem;
+    }
+
+    .action-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .reception-table button {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* Custom Scrollbar */
+.table-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 3px;
+}
+
+/* Smooth Animations */
+@media (prefers-reduced-motion: no-preference) {
+    .table-wrapper {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    .reception-table tr {
+        animation: fadeInLeft 0.4s ease-out backwards;
+    }
+
+    .reception-table tr:nth-child(n) {
+        animation-delay: calc(var(--index, 0) * 0.05s);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

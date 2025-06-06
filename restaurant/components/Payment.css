@@ -1,0 +1,309 @@
+/* Payment Page - Matching Lavender Background ✨ */
+
+body {
+    background: #C4B5FD !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.payment-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #C4B5FD;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.6s ease-in;
+    position: relative;
+    overflow: hidden;
+}
+
+.payment-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.payment-container {
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(216, 180, 254, 0.3);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: slideIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.payment-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4a5568;
+    font-weight: 700;
+    font-size: 28px;
+    position: relative;
+}
+
+.payment-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #D8B4FE, #C4B5FD);
+    border-radius: 2px;
+}
+
+.payment-form select {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 2px solid #e2e8f0;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background: #f8fafc;
+    color: #2d3748;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: inherit;
+}
+
+.payment-form select:focus {
+    border-color: #D8B4FE;
+    background: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(216, 180, 254, 0.1);
+    transform: translateY(-1px);
+}
+
+.payment-form input {
+    width: 100%;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    border: 2px solid #e2e8f0;
+    background: #f8fafc;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-size: 16px;
+    color: #2d3748;
+    font-family: inherit;
+}
+
+.payment-form input:focus {
+    border-color: #D8B4FE;
+    outline: none;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(216, 180, 254, 0.1);
+    transform: translateY(-1px);
+}
+
+.payment-form button {
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 16px;
+    background: #8B5CF6;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    margin-top: 8px;
+    box-shadow: 0 8px 16px rgba(139, 92, 246, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.payment-form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.payment-form button:hover::before {
+    left: 100%;
+}
+
+.payment-form button:hover {
+    background: #7C3AED;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(139, 92, 246, 0.5);
+}
+
+.payment-form button:active {
+    transform: translateY(0px);
+    transition: transform 0.1s ease;
+}
+
+.signup-link {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: #718096;
+}
+
+.signup-link a {
+    color: #D8B4FE;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.signup-link a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #D8B4FE, #C4B5FD);
+    transition: width 0.3s ease;
+}
+
+.signup-link a:hover::before {
+    width: 100%;
+}
+
+.signup-link a:hover {
+    color: #C4B5FD;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .payment-container {
+        width: 90%;
+        max-width: 420px;
+        padding: 36px 32px;
+        margin: 20px auto;
+    }
+
+    .payment-container h2 {
+        font-size: 24px;
+    }
+
+    .payment-form input,
+    .payment-form select {
+        padding: 14px 16px;
+        font-size: 16px;
+    }
+
+    .payment-form button {
+        padding: 14px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-container {
+        padding: 28px 24px;
+        border-radius: 20px;
+        margin: 15px;
+    }
+
+    .payment-container h2 {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+}
+
+/* Loading State */
+.payment-form button.loading {
+    background: linear-gradient(135deg, #a0aec0, #cbd5e0);
+    cursor: not-allowed;
+    position: relative;
+}
+
+.payment-form button.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success State */
+.payment-form button.success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Focus Accessibility */
+.payment-form button:focus-visible {
+    outline: 3px solid rgba(216, 180, 254, 0.5);
+    outline-offset: 2px;
+}
+
+.payment-form input:focus-visible,
+.payment-form select:focus-visible {
+    outline: none;
+}
