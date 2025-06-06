@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Signup.css';
 import axios from 'axios';
+import API_URL from './config.js';
 
 function Signup() {
     const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/signup', formData);
+            const response = await axios.post(`${API_URL}/api/signup`, formData);
             alert("Account Created Successfully");
             console.log(response.data);
         } catch (error) {
