@@ -1,7 +1,7 @@
-// pages/PaymentBreakdown.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './PaymentBreakdown.css';
+import API_URL from '../config.js';
 
 const PaymentBreakdown = () => {
     const [payments, setPayments] = useState([]);
@@ -10,7 +10,7 @@ const PaymentBreakdown = () => {
     useEffect(() => {
         const fetchPayments = async () => {
             try {
-                const res = await axios.post('http://localhost:5000/api/payments/get', { user_id });
+                const res = await axios.post(`${API_URL}/api/payments/get`, { user_id });
                 setPayments(res.data.payments);
             } catch (err) {
                 console.error('Error fetching payments:', err);

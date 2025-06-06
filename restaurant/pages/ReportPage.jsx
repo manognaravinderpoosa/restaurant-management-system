@@ -15,6 +15,7 @@ import {
     Legend,
 } from 'chart.js';
 import "./ReportPage.css";
+import API_URL from '../config.js';
 
 // Register Chart.js components
 ChartJS.register(
@@ -37,7 +38,7 @@ const ReportPage = () => {
         setLoading(true);
         setError("");
         try {
-            const response = await axios.get("/api/reports");
+            const response = await axios.get(`${API_URL}/api/reports`);
             // Ensure we always set an array
             setReports(Array.isArray(response.data) ? response.data : []);
         } catch (error) {

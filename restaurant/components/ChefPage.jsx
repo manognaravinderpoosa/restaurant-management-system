@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './ChefPage.css';
 import Navbar1 from "./Navbar1";
+import API_URL from '../config.js';
 
 const ChefPage = () => {
     const [orders, setOrders] = useState([]);
@@ -11,7 +12,7 @@ const ChefPage = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await axios.post("http://localhost:5000/api/orders/getKitchenOrders", {
+                const res = await axios.post(`${API_URL}/api/orders/getKitchenOrders`, {
                     user_id
                 });
 
@@ -44,7 +45,7 @@ const ChefPage = () => {
 
     const handleServed = async (orderId) => {
         try {
-            await axios.post("http://localhost:5000/api/order/markServed", { orderId });
+            await axios.post(`${API_URL}/api/order/markServed`, { orderId });
             setServedOrderIds(prev => [...prev, orderId]);
             alert("Order marked as served. Revenue updated.");
         } catch (err) {
@@ -52,7 +53,6 @@ const ChefPage = () => {
             alert("Failed to serve order.");
         }
     };
-
 
     return (
         <>

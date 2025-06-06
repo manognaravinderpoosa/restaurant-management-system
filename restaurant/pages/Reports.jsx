@@ -4,6 +4,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaFileDownload, FaChartBar, FaCalendarDay, FaCalendarWeek, FaCalendarAlt } from "react-icons/fa";
 import "./Reports.css";
+import API_URL from '../config.js';
 
 const Report = () => {
   const [reportData, setReportData] = useState([]);
@@ -16,7 +17,7 @@ const Report = () => {
     setError("");
     try {
       // Using the correct API endpoint from your backend
-      const response = await axios.get(`http://localhost:5000/api/reports/${type}`);
+      const response = await axios.get(`${API_URL}/api/reports/${type}`);
       setReportData(response.data);
       setReportType(type.charAt(0).toUpperCase() + type.slice(1));
     } catch (error) {

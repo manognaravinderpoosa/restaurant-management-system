@@ -1,4 +1,3 @@
-// pages/GraphicalAnalysis.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
@@ -11,6 +10,7 @@ import {
     Legend,
 } from 'chart.js';
 import './GraphicalAnalysis.css';
+import API_URL from '../config.js';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
@@ -21,7 +21,7 @@ const GraphicalAnalysis = () => {
     useEffect(() => {
         const fetchGraphData = async () => {
             try {
-                const res = await axios.post('http://localhost:5000/api/accountant/monthly-report', { user_id });
+                const res = await axios.post(`${API_URL}/api/accountant/monthly-report`, { user_id });
                 setMonthlyData(res.data.monthlyReport);
             } catch (err) {
                 console.error("Error fetching graph data:", err);

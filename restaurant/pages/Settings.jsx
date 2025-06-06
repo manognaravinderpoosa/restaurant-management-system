@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FiUpload, FiTrash2, FiLogOut } from 'react-icons/fi';
 import './Settings.css';
+import API_URL from '../config.js';
 
 const Settings = () => {
   const [profile, setProfile] = useState({ username: '', email: '', profilePic: null });
@@ -16,7 +17,7 @@ const Settings = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
-      const { data } = await axios.get('http://localhost:5000/api/admin/profile', {
+      const { data } = await axios.get(`${API_URL}/api/admin/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProfile(data);
@@ -35,7 +36,7 @@ const Settings = () => {
       const token = localStorage.getItem('token');
       if (!token) return alert('Not authenticated');
       await axios.put(
-        'http://localhost:5000/api/admin/profile',
+        `${API_URL}/api/admin/profile`,
         { username: profile.username, email: profile.email },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -58,7 +59,7 @@ const Settings = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) return alert('Not authenticated');
-      const { data } = await axios.post('http://localhost:5000/api/admin/profile/picture', formData, {
+      const { data } = await axios.post(`${API_URL}/api/admin/profile/picture`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -77,7 +78,7 @@ const Settings = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) return alert('Not authenticated');
-      await axios.delete('http://localhost:5000/api/admin/profile/picture', {
+      await axios.delete(`${API_URL}/api/admin/profile/picture`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProfile((prev) => ({ ...prev, profilePic: null }));
@@ -102,7 +103,7 @@ const Settings = () => {
           {profile.profilePic ? (
             <>
               <img
-                src={`http://localhost:5000/uploads/admin-profile-pics/${profile.profilePic}`}
+                src={`${API_URL}/uploads/admin-profile-pics/${profile.profilePic}`}
                 alt="Profile"
                 className="profile-pic"
               />

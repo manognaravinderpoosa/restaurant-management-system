@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ReceptionManager.css';
 import Navbar1 from './Navbar1';
+import API_URL from '../config.js';
 
 const ReceptionManager = () => {
     const [orders, setOrders] = useState([]);
@@ -19,7 +20,7 @@ const ReceptionManager = () => {
 
     const fetchOrders = async () => {
         try {
-            const res = await axios.post("http://localhost:5000/api/orders/getKitchenOrders", { user_id });
+            const res = await axios.post(`${API_URL}/api/orders/getKitchenOrders`, { user_id });
             setOrders(res.data.orders);
         } catch (err) {
             console.error("Error fetching orders:", err);
@@ -28,7 +29,7 @@ const ReceptionManager = () => {
 
     const handlePaymentComplete = async (orderId) => {
         try {
-            await axios.post("http://localhost:5000/api/order/pay", { orderId });
+            await axios.post(`${API_URL}/api/order/pay`, { orderId });
             fetchOrders(); // Refresh immediately after payment
             alert("Payment confirmed. Order closed.");
         } catch (err) {

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './CustomerEntry.css'; // Import the CSS
+import './CustomerEntry.css';
+import API_URL from '../config.js';
 
 const CustomerEntry = () => {
     const { user_id } = useParams();
@@ -12,7 +13,7 @@ const CustomerEntry = () => {
     useEffect(() => {
         const fetchTableCount = async () => {
             try {
-                const res = await axios.post('http://localhost:5000/api/getTableCount', { user_id });
+                const res = await axios.post(`${API_URL}/api/getTableCount`, { user_id });
                 setNumTables(res.data.num_tables);
                 setLoading(false);
             } catch (err) {

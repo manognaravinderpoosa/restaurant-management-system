@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ExpensesManagement.css';
+import API_URL from '../config.js';
 
 const ExpensesManagement = () => {
     const [expenses, setExpenses] = useState([]);
@@ -9,7 +10,7 @@ const ExpensesManagement = () => {
 
     const fetchExpenses = async () => {
         try {
-            const res = await axios.post('http://localhost:5000/api/expenses/get', { user_id });
+            const res = await axios.post(`${API_URL}/api/expenses/get`, { user_id });
             setExpenses(res.data.expenses);
         } catch (err) {
             console.error("Error fetching expenses:", err);
@@ -19,7 +20,7 @@ const ExpensesManagement = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/expenses/add', {
+            await axios.post(`${API_URL}/api/expenses/add`, {
                 ...form,
                 user_id
             });

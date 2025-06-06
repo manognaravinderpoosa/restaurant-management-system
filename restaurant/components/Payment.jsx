@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Payment.css";
+import API_URL from '../config.js';
 
 const Payment = () => {
     const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ const Payment = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:5000/api/payment", {
+            const response = await axios.post(`${API_URL}/api/payment`, {
                 user_id: formData.user_id,
                 password: formData.password,
             });
@@ -50,7 +51,7 @@ const Payment = () => {
                 />
                 <button type="submit">Pay Now ₹1500</button>
                 <div className="signup-link">
-                    Don’t have an account? <a href="/signup">Sign Up</a>
+                    Don't have an account? <a href="/signup">Sign Up</a>
                 </div>
             </form>
         </div>

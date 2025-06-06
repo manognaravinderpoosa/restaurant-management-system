@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 import "./Notifications.css";
+import API_URL from '../config.js';
 
-const socket = io("http://localhost:5000");
+const socket = io(API_URL);
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
@@ -14,7 +15,7 @@ const Notifications = () => {
     try {
       setLoading(true);
       // Using the correct API endpoint from your backend
-      const response = await axios.get("http://localhost:5000/api/notifications");
+      const response = await axios.get(`${API_URL}/api/notifications`);
       setNotifications(response.data || []);
       setError(null);
     } catch (error) {
@@ -58,7 +59,7 @@ const Notifications = () => {
     try {
       // Check if your backend has this endpoint, if not, handle locally
       try {
-        await axios.put(`http://localhost:5000/api/notifications/${id}/read`);
+        await axios.put(`${API_URL}/api/notifications/${id}/read`);
       } catch (apiError) {
         console.log("API endpoint not available, handling locally");
       }
@@ -81,7 +82,7 @@ const Notifications = () => {
     try {
       // Check if your backend has this endpoint, if not, handle locally
       try {
-        await axios.delete(`http://localhost:5000/api/notifications/${id}`);
+        await axios.delete(`${API_URL}/api/notifications/${id}`);
       } catch (apiError) {
         console.log("API endpoint not available, handling locally");
       }
@@ -98,7 +99,7 @@ const Notifications = () => {
     try {
       // Check if your backend has this endpoint, if not, handle locally
       try {
-        await axios.put("http://localhost:5000/api/notifications/mark-all-read");
+        await axios.put(`${API_URL}/api/notifications/mark-all-read`);
       } catch (apiError) {
         console.log("API endpoint not available, handling locally");
       }
@@ -117,7 +118,7 @@ const Notifications = () => {
       try {
         // Check if your backend has this endpoint, if not, handle locally
         try {
-          await axios.delete("http://localhost:5000/api/notifications/clear-all");
+          await axios.delete(`${API_URL}/api/notifications/clear-all`);
         } catch (apiError) {
           console.log("API endpoint not available, handling locally");
         }

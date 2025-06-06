@@ -5,7 +5,9 @@ import StockUsageChart from "../components/StockUsageChart";
 import StockOverview from "../components/StockOverview";
 import "./Dashboard.css";
 import { RxDashboard } from "react-icons/rx";
-const socket = socketIOClient("http://localhost:5000");
+import API_URL from '../config.js';
+
+const socket = socketIOClient(API_URL); // ✅ Using API_URL instead of localhost
 
 const Dashboard = () => {
   const [totalStock, setTotalStock] = useState(0);
@@ -19,7 +21,7 @@ const Dashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/dashboard");
+      const { data } = await axios.get(`${API_URL}/api/dashboard`);
       setTotalStock(data.totalStock);
       setLowStock(data.lowStockCount);
       setStockUsage(data.stockUsage || 0);
@@ -32,7 +34,7 @@ const Dashboard = () => {
 
   const fetchChartData = async () => {
     try {
-      await axios.get("http://localhost:5000/api/dashboard/usage-chart");
+      await axios.get(`${API_URL}/api/dashboard/usage-chart`);
     } catch (error) {
       console.error("Failed to fetch chart data", error);
     }
@@ -76,8 +78,7 @@ const Dashboard = () => {
       </button>
 
       <div className="dashboard-header" style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "10px" }}>
-
-        <h2> <RxDashboard />   Inventory Dashboard</h2>
+         <h2> <RxDashboard />   Inventory Dashboard</h2>
       </div>
 
       <div className="cards">
@@ -93,14 +94,12 @@ const Dashboard = () => {
           <h4>Stock Usage</h4>
           <p>{stockUsage}</p>
         </div>
+       </div>
 
-      </div>
-
-      <div className="chart-container">
+       <div className="chart-container">
         <StockUsageChart />
         <StockOverview />
-
-      </div>
+       </div>
     </div>
   );
 };

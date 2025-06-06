@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./StockManagement.css";
+import API_URL from '../config.js';
 
 import { TfiPackage } from "react-icons/tfi";
 import { MdEdit } from "react-icons/md";
@@ -24,7 +25,7 @@ const StockManagement = () => {
 
   const fetchStock = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/inventory-stock");
+      const response = await axios.get(`${API_URL}/api/inventory-stock`);
       setStockList(response.data);
     } catch (error) {
       console.error("Error fetching stock:", error);
@@ -39,10 +40,10 @@ const StockManagement = () => {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/inventory-stock/${editingId}`, stock);
+        await axios.put(`${API_URL}/api/inventory-stock/${editingId}`, stock);
         setEditingId(null);
       } else {
-        await axios.post("http://localhost:5000/api/inventory-stock", stock);
+        await axios.post(`${API_URL}/api/inventory-stock`, stock);
       }
       setStock({ name: "", category: "", type: "", quantity: 1 });
       fetchStock();
@@ -64,7 +65,7 @@ const StockManagement = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this stock item?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/inventory-stock/${id}`);
+      await axios.delete(`${API_URL}/api/inventory-stock/${id}`);
       fetchStock();
     } catch (error) {
       console.error("Error deleting stock:", error);

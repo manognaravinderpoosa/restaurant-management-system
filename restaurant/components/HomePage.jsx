@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./HomePage.css";
 import Navbar1 from "./Navbar1";
+import API_URL from '../config.js';
 
 const HomePage = () => {
     const [paymentStatus, setPaymentStatus] = useState(null);
@@ -18,7 +19,7 @@ const HomePage = () => {
 
         const fetchPaymentStatus = async () => {
             try {
-                const response = await axios.post("http://localhost:5000/api/getPaymentStatus", {
+                const response = await axios.post(`${API_URL}/api/getPaymentStatus`, {
                     user_id: userId
                 });
                 setPaymentStatus(response.data.status);

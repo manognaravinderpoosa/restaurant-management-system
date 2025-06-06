@@ -1,9 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
 import { io } from "socket.io-client";
+import API_URL from '../config.js';
 
 export const NotificationContext = createContext();
 
-const socket = io("http://localhost:5000"); // ✅ Change to your backend URL in production
+const socket = io(API_URL); // ✅ Using API_URL instead of localhost
 
 export const NotificationProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([]);

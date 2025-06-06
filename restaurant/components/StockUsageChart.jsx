@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ApexCharts from 'react-apexcharts';
-import axios from 'axios'; // or any other method you're using to fetch data
-
+import axios from 'axios';
+import API_URL from '../config.js';
 
 const StockUsageChart = () => {
     const [chartData, setChartData] = useState([]);
@@ -10,7 +10,7 @@ const StockUsageChart = () => {
 
     useEffect(() => {
         // Fetch stock usage data from your API
-        axios.get('http://localhost:5000/api/stock-usage') // Replace with your API endpoint
+        axios.get(`${API_URL}/api/stock-usage`) // Replace with your API endpoint
             .then(response => {
                 console.log("API Response:", response.data); // Log the raw response data
                 const data = response.data; // Assuming this returns the stock usage data

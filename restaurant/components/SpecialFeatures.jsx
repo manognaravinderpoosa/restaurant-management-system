@@ -6,6 +6,8 @@ import "./SpecialFeatures.css";
 import Navbar1 from "../components/Navbar1";
 import { Link } from "react-router-dom";
 import UpdateMenu from "./UpdateMenu";
+import API_URL from '../config.js';
+
 const SpecialFeatures = () => {
   const [qrData, setQrData] = useState(null);
   const [showQR, setShowQR] = useState(false);
@@ -22,7 +24,7 @@ const SpecialFeatures = () => {
 
   const handleGenerateQR = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/generateQR", { user_id: userId });
+      const response = await axios.post(`${API_URL}/api/generateQR`, { user_id: userId });
       if (response.data.qrValue) {
         setQrData(response.data.qrValue);
         setMessage("QR code generated successfully!");
@@ -36,7 +38,7 @@ const SpecialFeatures = () => {
   const handleViewQR = async () => {
     try {
       if (!qrData) {
-        const response = await axios.post("http://localhost:5000/api/viewQR", {
+        const response = await axios.post(`${API_URL}/api/viewQR`, {
           user_id: userId,
         });
         if (response.data.qrValue) {
@@ -60,7 +62,7 @@ const SpecialFeatures = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/setTables", {
+      const response = await axios.post(`${API_URL}/api/setTables`, {
         user_id: userId,
         num_tables: Number(numTables),
       });

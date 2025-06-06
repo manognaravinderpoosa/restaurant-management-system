@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './StaffManagement.css';
 import axios from 'axios';
+import API_URL from '../config.js';
 
 const StaffManager = () => {
     const [staff, setStaff] = useState([]);
     const [form, setForm] = useState({ name: '', category: '', salary: '' });
     const [totalSalary, setTotalSalary] = useState(0);
     const user_id = localStorage.getItem("user_id");
+    
     const fetchStaff = async () => {
         try {
-            const res = await axios.post("http://localhost:5000/api/staff/get", { user_id });
+            const res = await axios.post(`${API_URL}/api/staff/get`, { user_id });
             setStaff(res.data.staff);
             const total = res.data.staff.reduce((acc, s) => acc + parseInt(s.salary), 0);
             setTotalSalary(total);
@@ -21,7 +23,7 @@ const StaffManager = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:5000/api/staff/add", {
+            await axios.post(`${API_URL}/api/staff/add`, {
                 ...form,
                 user_id
             });

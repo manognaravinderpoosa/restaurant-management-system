@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './StockUsageEntry.css';
+import API_URL from '../config.js';
 
 const StockUsageEntry = ({ existingUsage = null, onSave = () => {} }) => {
   const [stockName, setStockName] = useState('');
@@ -27,8 +28,8 @@ const StockUsageEntry = ({ existingUsage = null, onSave = () => {} }) => {
 
     try {
       const url = existingUsage
-        ? 'http://localhost:5000/api/stock-usage/update-usage'
-        : 'http://localhost:5000/api/stock-usage/add';
+        ? `${API_URL}/api/stock-usage/update-usage`
+        : `${API_URL}/api/stock-usage/add`;
       const method = existingUsage ? 'put' : 'post';
 
       await axios({

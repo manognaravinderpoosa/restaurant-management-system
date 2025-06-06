@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './UpdateMenu.css';
+import API_URL from '../config.js';
 
 const categories = ["Starters", "Main Course", "Desserts", "Juices", "Soft Drinks", "soups"];
 
@@ -22,7 +23,7 @@ const UpdateMenu = () => {
 
     const fetchMenu = async () => {
         try {
-            const response = await axios.post("http://localhost:5000/api/menu/getMenuItems", { user_id: userId });
+            const response = await axios.post(`${API_URL}/api/menu/getMenuItems`, { user_id: userId });
             setItems(response.data.items);
         } catch (error) {
             console.error("Error fetching menu:", error);
@@ -72,7 +73,7 @@ const UpdateMenu = () => {
         formData.append('image', file);
 
         try {
-            const response = await axios.post("http://localhost:5000/api/menu/uploadImage", formData, {
+            const response = await axios.post(`${API_URL}/api/menu/uploadImage`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -99,7 +100,7 @@ const UpdateMenu = () => {
                 imageUrl = await uploadImage(image);
             }
 
-            await axios.post("http://localhost:5000/api/menu/addMenuItem", {
+            await axios.post(`${API_URL}/api/menu/addMenuItem`, {
                 user_id: userId,
                 name,
                 price,
@@ -149,7 +150,7 @@ const UpdateMenu = () => {
                 imageUrl = await uploadImage(item.tempImage);
             }
 
-            await axios.put(`http://localhost:5000/api/menu/updateMenuItem/${id}`, {
+            await axios.put(`${API_URL}/api/menu/updateMenuItem/${id}`, {
                 name,
                 price,
                 category,
@@ -175,7 +176,7 @@ const UpdateMenu = () => {
         }
 
         try {
-            await axios.delete(`http://localhost:5000/api/menu/deleteMenuItem/${id}`);
+            await axios.delete(`${API_URL}/api/menu/deleteMenuItem/${id}`);
             fetchMenu();
         } catch (error) {
             console.error("Error deleting item:", error);
@@ -296,7 +297,7 @@ const UpdateMenu = () => {
                             {(item.image_url || item.tempImagePreview) && (
                                 <div className="current-image">
                                     <img
-                                        src={item.tempImagePreview || `http://localhost:5000${item.image_url}`}
+                                        src={item.tempImagePreview || `${API_URL}${item.image_url}`}
                                         alt={item.name}
                                         className="dish-image"
                                     />

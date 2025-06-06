@@ -4,6 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./AccountantManager.css";
 import Navbar1 from "./Navbar1";
+import API_URL from '../config.js';
 
 const AccountantManager = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -17,7 +18,7 @@ const AccountantManager = () => {
         const fetchRevenueAndItems = async () => {
             setLoading(true);
             try {
-                const response = await axios.post("http://localhost:5000/api/accountant/revenue", {
+                const response = await axios.post(`${API_URL}/api/accountant/revenue`, {
                     user_id,
                     date: selectedDate
                 });

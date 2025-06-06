@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import './MenuPage.css';
 import { GiKnifeFork } from "react-icons/gi";
+import API_URL from '../config.js';
 
 const categories = ["Soups", "Starters", "Main Course", "Soft Drinks", "Desserts"];
 
@@ -19,7 +20,7 @@ const MenuPage = () => {
     useEffect(() => {
         const fetchMenu = async () => {
             try {
-                const res = await axios.post("http://localhost:5000/api/menu/getMenuItems", { user_id });
+                const res = await axios.post(`${API_URL}/api/menu/getMenuItems`, { user_id });
                 const allItems = res.data.items;
                 setMenu(allItems);
 
@@ -82,7 +83,7 @@ const MenuPage = () => {
             };
 
             try {
-                await axios.post("http://localhost:5000/api/order/place", order);
+                await axios.post(`${API_URL}/api/order/place`, order);
                 alert(`Order sent to kitchen for Table ${table_no} (Pay at Counter)`);
                 setCart([]);
             } catch (err) {
@@ -100,7 +101,7 @@ const MenuPage = () => {
             };
 
             try {
-                await axios.post("http://localhost:5000/api/order/place", order);
+                await axios.post(`${API_URL}/api/order/place`, order);
                 alert(`Order placed and paid for Table ${table_no}`);
                 setCart([]);
             } catch (err) {
@@ -109,8 +110,6 @@ const MenuPage = () => {
             }
         }
     };
-
-
 
     const handlePayAtCounter = async () => {
         if (!user_id || !table_no || cart.length === 0) {
@@ -121,7 +120,7 @@ const MenuPage = () => {
         const totalAmount = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/order/place', {
+            const response = await axios.post(`${API_URL}/api/order/place`, {
                 user_id,
                 table_number: table_no,
                 items: cart,
@@ -169,7 +168,7 @@ const MenuPage = () => {
                                     <div className="image-container">
                                         {item.image_url ? (
                                             <img
-                                                src={`http://localhost:5000${item.image_url}`}
+                                                src={`${API_URL}${item.image_url}`}
                                                 alt={item.name}
                                                 className="menu-image"
                                             />
