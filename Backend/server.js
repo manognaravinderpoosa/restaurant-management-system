@@ -37,7 +37,7 @@ const Payment = mongoose.model('Payment', paymentSchema);
 
 // Route imports - All files should exist now
 const stockRoutes = require('./Routes/stockRoutes');
-const adminAuthRoutes = require('./Routes/adminAuthRoutes');
+// const adminAuthRoutes = require('./Routes/adminAuthRoutes');
 const adminRoutes = require('./Routes/adminRoutes');
 // const authRoutes = require('./Routes/authRoutes');
 const dashboardRoutes = require('./Routes/dashboardRoutes');
@@ -145,7 +145,7 @@ const RestaurantOwner = mongoose.model('RestaurantOwner', restaurantOwnerSchema)
 
 // YOUR NEW INVENTORY ROUTES (all routes now active)
 app.use('/api/inventory-stock', stockRoutes);
-app.use('/api/admin-auth', adminAuthRoutes);
+// app.use('/api/admin-auth', adminAuthRoutes);
 app.use('/api/admin', adminRoutes);
 // app.use('/api/auth-inventory', authRoutes);
 app.use('/api/dashboard', dashboardRoutes);
