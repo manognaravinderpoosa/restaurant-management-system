@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Signup.css';
 import axios from 'axios';
-import API_URL from './config.js';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 function Signup() {
     const [formData, setFormData] = useState({
